@@ -2,6 +2,8 @@ import * as React from "react";
 import makeStyles from "@mui/styles/makeStyles";
 import CustomDrawer from "./components/CustomDrawer";
 import CustomMaps from "./components/Maps";
+import CustomCard from "./components/CustomCard";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -14,8 +16,13 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CustomDrawer />
-      <CustomMaps />
+      <Router>
+        <CustomDrawer />
+        <Routes>
+          <Route path="/dashboard" element={<CustomCard />} />
+          <Route path="/" element={<CustomMaps />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
