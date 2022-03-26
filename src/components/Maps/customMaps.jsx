@@ -21,10 +21,10 @@ const useStyles = makeStyles({
 
 const defaultProps = {
   center: {
-    lat: 10.99835602,
-    lng: 77.01502627,
+    lat: 36.820344103027615,
+    lng: 7.714581370296837,
   },
-  zoom: 20,
+  zoom: 15,
 };
 
 const CustomMaps = () => {
@@ -35,18 +35,18 @@ const CustomMaps = () => {
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyBVr_asaTPp44AvDJ-3KF2nRyzUYvDrASU" }}
+        bootstrapURLKeys={{ key: "AIzaSyBHlbIHEr1Jfo_99EIfi870YUHRUfc2QKE" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         options={(maps) => ({
           fullscreenControl: false,
-          //   mapTypeId: maps.MapTypeId.SATELLITE,
+          // mapTypeId: maps.MapTypeId.SATELLITE,
         })}
         yesIWantToUseGoogleMapApiInternals
       >
-        <Marker lat={10.99835602} lng={77.01502627} />
-        <Marker lat={10.99835602} lng={78.01502627} />
+        <Marker lat={36.820281644101755} lng={7.715169516991862} />
+        <Marker lat={36.82024943669526} lng={7.7150394298562714} />
       </GoogleMapReact>
     </div>
   );
