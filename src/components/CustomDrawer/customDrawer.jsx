@@ -1,16 +1,19 @@
 import * as React from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import ArrowBack from "@mui/icons-material/ArrowBack";
-import InboxIcon from "@mui/icons-material/InboxOutlined";
-import MailIcon from "@mui/icons-material/Mail";
+import MapIcon from "@mui/icons-material/Map";
+import HubIcon from "@mui/icons-material/Hub";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PDFIcon from "@mui/icons-material/PictureAsPdf";
 import makeStyles from "@mui/styles/makeStyles";
+import clsx from "clsx";
 
 const useStyles = makeStyles({
   drawerContainer: {
@@ -27,13 +30,11 @@ const useStyles = makeStyles({
     left: 5,
     "&.MuiButtonBase-root": {
       backgroundColor: ({ drawerOpen }) => {
-        console.log(!drawerOpen);
         return !drawerOpen ? "rgb(25 118 210 / 80%)" : "transparent";
       },
       color: ({ drawerOpen }) => (!drawerOpen ? "#fff" : "#1976d2"),
       "&:hover": {
         backgroundColor: ({ drawerOpen }) => {
-          console.log(!drawerOpen);
           return !drawerOpen
             ? "rgb(25 118 210 / 70%)"
             : "rgba(25, 118, 210, 0.04)";
@@ -44,14 +45,32 @@ const useStyles = makeStyles({
   link: {
     textDecoration: "none !important",
     color: "#000 !important",
+    "&:hover": {
+      "& .MuiSvgIcon-root": {
+        color: "#000 !important",
+      },
+      "& > .MuiButtonBase-root:hover": {
+        color: "#000 !important",
+        backgroundColor: "#1976d2c2 !important",
+      },
+    },
+  },
+  activeLink: {
+    color: "#fff !important",
+    "& .MuiSvgIcon-root": {
+      color: "#fff",
+    },
+    "& > .MuiButtonBase-root": {
+      backgroundColor: "#1976d2",
+    },
   },
 });
 
 const listItems = [
-  { text: "Map", path: "/" },
-  { text: "Graphe (Orienté)", path: "oriented-graph" },
-  { text: "Tableau de Bord", path: "dashboard" },
-  { text: "Rapports", path: "repports" },
+  { text: "Map", path: "/", Icon: <MapIcon /> },
+  { text: "Graphe (Orienté)", path: "oriented-graph", Icon: <HubIcon /> },
+  { text: "Tableau de Bord", path: "dashboard", Icon: <DashboardIcon /> },
+  { text: "Rapports", path: "repports", Icon: <PDFIcon /> },
 ];
 
 function CustomDrawer() {
@@ -84,19 +103,21 @@ function CustomDrawer() {
           onClick={(e) => handleOpenDrawer(e, false)}
         >
           <List>
-            {listItems.map((item, index) => (
-              <Link
-                className={classes.link}
+            {listItems.map((item) => (
+              <NavLink
+                className={({ isActive }) =>
+                  !isActive
+                    ? classes.link
+                    : clsx(classes.link, classes.activeLink)
+                }
                 to={item.path}
                 key={`${item.text}-${item.path}`}
               >
                 <ListItem button>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
+                  <ListItemIcon>{item.Icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItem>
-              </Link>
+              </NavLink>
             ))}
           </List>
           {/* <Divider /> */}
