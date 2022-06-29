@@ -17,12 +17,12 @@ module.exports = merge(common, {
   devtool: 'source-map',
   devServer: {
     hot: true,
-    publicPath: `/${process.env.ODOO_MODULE_NAME}/static/js/lib/`,
+    publicPath: `/${process.env.JS_PATH}/lib`,
     // watchContentBase: true,
     port: 8080,
     proxy: {
-      [`!(/${process.env.ODOO_MODULE_NAME}/static/js/lib/**.*)`]: {
-        target: `//${process.env.ODOO_HOST}:${process.env.ODOO_PORT}`,
+      [`!(/${process.env.JS_PATH}/lib/**.*)`]: {
+        target: `http://${process.env.ODOO_HOST}:${process.env.ODOO_PORT}`,
       },
     },
   },

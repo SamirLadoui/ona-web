@@ -4,5 +4,7 @@
 }
 
 #app {
+  overflow-y: auto;
+  max-height: calc(100% - 20px);
   padding: 20px;
 }

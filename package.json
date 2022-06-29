@@ -1,5 +1,5 @@
 {
-  "name": "webpack-odoo-template",
+  "name": "react-odoo-ona",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -63,16 +63,24 @@
   },
   "dependencies": {
     "@date-io/date-fns": "^2.8.0",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/pickers": "^3.2.10",
-    "@material-ui/styles": "^4.10.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.6",
+    "@mui/styles": "^5.8.6",
     "axios": "^0.19.2",
+    "chart.js": "^3.8.0",
+    "clsx": "^1.1.1",
     "date-fns": "^2.14.0",
+    "google-map-react": "^2.1.10",
     "react": "^16.13.1",
     "react-async": "^10.0.1",
+    "react-chartjs-2": "^4.2.0",
     "react-dom": "^16.13.1",
-    "typeface-roboto": "0.0.75"
+    "react-perfect-scrollbar": "^1.5.8",
+    "react-router-dom": "^6.3.0",
+    "typeface-roboto": "0.0.75",
+    "uuid": "^3.4.0"
   },
   "module": "src/index.jsx",
   "description": ""

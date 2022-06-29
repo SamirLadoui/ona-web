@@ -1,11 +1,30 @@
-import React from 'react';
+import * as React from 'react';
+import makeStyles from '@mui/styles/makeStyles';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CustomDrawer from './components/CustomDrawer';
+import CustomMaps from './components/Maps';
+import Missions from './components/dashboard';
 
-const App = () => {
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+    height: '100%',
+  },
+});
+
+function App() {
+  const classes = useStyles();
+
   return (
-    <>
-      <h1>Hello Odoo from React</h1>
-    </>
+    <div className={classes.root}>
+      <Router>
+        <CustomDrawer />
+        <Routes>
+          <Route path="/missions" element={<Missions />} />
+          <Route path="/" element={<CustomMaps />} />
+        </Routes>
+      </Router>
+    </div>
   );
-};
-
+}
 export default App;
